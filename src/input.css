@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* === Base styles + Variables === */
+@layer base {
+  :root {
+    --font-quicksand: "Quicksand", sans-serif;
+    --animation-delay-100: 100ms;
+    --animation-delay-200: 200ms;
+    --animation-delay-300: 300ms;
+    --animation-delay-400: 400ms;
+    --animation-delay-500: 500ms;
+    --animation-delay-600: 600ms;
+    --animation-delay-700: 700ms;
+    --animation-delay-800: 800ms;
+    --animation-delay-900: 900ms;
+    --animation-delay-1000: 1000ms;
+  }
+
+  @keyframes wavy {
+    0%,
+    100% {
+      transform: scaleY(0.5);
+    }
+    50% {
+      transform: scaleY(1.5);
+    }
+  }
+
+  body {
+    font-family: var(--font-quicksand);
+  }
+
+  h1 {
+    @apply text-6xl font-bold;
+  }
+
+  h2 {
+    @apply text-5xl font-bold;
+  }
+
+  h3 {
+    @apply text-4xl font-bold;
+  }
+
+  h4 {
+    @apply text-3xl font-bold;
+  }
+
+  h5 {
+    @apply text-2xl font-bold;
+  }
+
+  h6 {
+    @apply text-xl font-bold;
+  }
+}
+
+/* === Custom Utilities === */
+@layer utilities {
+  .animate-wavy {
+    animation: wavy 1000ms linear infinite;
+  }
+
+  /* Custom animation delay utilities */
+  .animation-delay-100 {
+    animation-delay: var(--animation-delay-100);
+  }
+  .animation-delay-200 {
+    animation-delay: var(--animation-delay-200);
+  }
+  .animation-delay-300 {
+    animation-delay: var(--animation-delay-300);
+  }
+  .animation-delay-400 {
+    animation-delay: var(--animation-delay-400);
+  }
+  .animation-delay-500 {
+    animation-delay: var(--animation-delay-500);
+  }
+  .animation-delay-600 {
+    animation-delay: var(--animation-delay-600);
+  }
+  .animation-delay-700 {
+    animation-delay: var(--animation-delay-700);
+  }
+  .animation-delay-800 {
+    animation-delay: var(--animation-delay-800);
+  }
+  .animation-delay-900 {
+    animation-delay: var(--animation-delay-900);
+  }
+  .animation-delay-1000 {
+    animation-delay: var(--animation-delay-1000);
+  }
+}
+
+/* === Custom Variants === */
+
+/* group-open: supports custom open logic for group elements */
+@custom-variant group-open {
+  &:is(:where(.group):is(.open, [open], :popover-open, :open) *) {
+    @slot;
+  }
+}
+
+/* peer-open: supports peer elements that are "open" */
+@custom-variant peer-open {
+  &:is(:where(.peer):is(.open, [open], :popover-open, :open) ~ *) {
+    @slot;
+  }
+}
+
+/* dark mode variant */
+@custom-variant dark {
+  &:where(.dark, .dark *) {
+    @slot;
+  }
+}
